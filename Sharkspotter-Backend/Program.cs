@@ -13,10 +13,14 @@ builder.Services.AddSwaggerGen();
 
 Console.WriteLine("enter connection string");
 string connection = Console.ReadLine();
+
+
 builder.Services.AddDbContext<DataContext>(
     options => options.UseSqlServer(connection));
 
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<BeachService>();
+builder.Services.AddScoped<SpottingService>();
 
 var app = builder.Build();
 

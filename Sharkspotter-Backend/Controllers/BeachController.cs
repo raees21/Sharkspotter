@@ -3,9 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Sharkspotter_Backend.Models;
 using Microsoft.AspNetCore.Http;
 using System.Net;
-using Sharkspotter_Backend.Data;
 
-namespace Sharkspotter_Backend.Controller
+namespace Sharkspotter_Backend.Data
 {
     [ApiController]
     [Route("api/v1/beaches")]
@@ -13,7 +12,7 @@ namespace Sharkspotter_Backend.Controller
     public class BeachController : ControllerBase
     {
 
-        private BeachService beachService;
+        private readonly BeachService beachService;
         public BeachController(BeachService service)
         {
             this.beachService = service;
@@ -24,15 +23,15 @@ namespace Sharkspotter_Backend.Controller
         /// </summary>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Beach>), 200)]
-        public async Task<ActionResult<IEnumerable<Beach>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<Beach>>> GetBeaches()
         {
-            IEnumerable<Beach> products =  beachService.getAllBeaches();
+            IEnumerable<Beach> beaches =  beachService.getAllBeaches();
             
-            return StatusCode(200, products);
+            return StatusCode(200, beaches);
         }
 
         /// <summary>
-        /// Get a single product
+        /// Get a single beach
         /// </summary>
         [HttpGet("{beachId}")]
         [ProducesResponseType(typeof(Beach), 200)]
@@ -65,7 +64,7 @@ namespace Sharkspotter_Backend.Controller
         /// <summary>
         /// Remove a beach
         /// </summary>
-        [HttpDelete("{productId}")]
+        [HttpDelete("{beachId}")]
         [Authorize(Roles = "Administrator")]
         public async Task<ActionResult> DeleteBeach(Guid beachId) 
         {
