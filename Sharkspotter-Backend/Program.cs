@@ -10,8 +10,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+Console.WriteLine("enter connection string");
+string connection = Console.ReadLine();
 builder.Services.AddDbContext<DataContext>(
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("SharkspotterDB")));
+    options => options.UseSqlServer(connection));
 
 builder.Services.AddScoped<UserService>();
 

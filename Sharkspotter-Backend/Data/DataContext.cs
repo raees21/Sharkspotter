@@ -12,5 +12,7 @@ namespace Sharkspotter_Backend.Data
         public DbSet<Spotting> Spottings { get; set; }
         public DbSet<Beach> Beaches { get; set; }
 
+
+
     }
 }
