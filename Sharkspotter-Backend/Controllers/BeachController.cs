@@ -51,7 +51,6 @@ namespace Sharkspotter_Backend.Data
         /// Create a new beach
         /// </summary>
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
         [ProducesResponseType(typeof(Beach), 201)]
         public async Task<ActionResult<Beach>> CreateBeach(Beach beach)
         {
@@ -65,8 +64,8 @@ namespace Sharkspotter_Backend.Data
         /// Remove a beach
         /// </summary>
         [HttpDelete("{beachId}")]
-        [Authorize(Roles = "Administrator")]
-        public async Task<ActionResult> DeleteBeach(Guid beachId) 
+
+        public async Task<ActionResult> DeleteBeach(int beachId) 
         {
             int code = await beachService.DeleteBeach(beachId);
  

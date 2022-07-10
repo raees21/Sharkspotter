@@ -52,7 +52,6 @@ namespace Sharkspotter_Backend.Controller
         /// Create a new spotting
         /// </summary>
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
         [ProducesResponseType(typeof(Spotting), 201)]
         public async Task<ActionResult<Spotting>> CreateSpotting(Spotting spotting)
         {
@@ -66,8 +65,7 @@ namespace Sharkspotter_Backend.Controller
         /// Remove a spotting
         /// </summary>
         [HttpDelete("{productId}")]
-        [Authorize(Roles = "Administrator")]
-        public async Task<ActionResult> DeleteSpotting(Guid spottingId)
+        public async Task<ActionResult> DeleteSpotting(int spottingId)
         {
             int code = await spottingService.DeleteSpotting(spottingId);
 

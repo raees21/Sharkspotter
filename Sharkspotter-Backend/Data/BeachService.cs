@@ -39,7 +39,7 @@ namespace Sharkspotter_Backend.Data
           
         }
 
-        public async Task<int> DeleteBeach(Guid beachId)
+        public async Task<int> DeleteBeach(int beachId)
         {
     
             Beach beach = await context.Beaches.FirstOrDefaultAsync(beach => beach.id == beachId);

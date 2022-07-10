@@ -39,7 +39,7 @@ namespace Sharkspotter_Backend.Data
 
         }
 
-        public async Task<int> DeleteSpotting(Guid spottingId)
+        public async Task<int> DeleteSpotting(int spottingId)
         {
 
             Spotting spotting = await context.Spottings.FirstOrDefaultAsync(spotting => spotting.id == spottingId);
