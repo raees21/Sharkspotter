@@ -11,12 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-Console.WriteLine("enter connection string");
-string connection = Console.ReadLine();
-
-
 builder.Services.AddDbContext<DataContext>(
-    options => options.UseSqlServer(connection));
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("SharkspotterDB")));
 
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<BeachService>();
