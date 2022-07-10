@@ -5,6 +5,8 @@
         public int userid { get; set; }
         public string user_name { get; set; }
 
+        public User() { }
+
         public User(int userid, string user_name)
         {
             userid = userid;

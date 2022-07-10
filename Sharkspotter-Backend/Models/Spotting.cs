@@ -6,6 +6,8 @@
         public int userid { get; set; }
         public int beachid { get; set; }
         public DateTime spottingAt { get; set; }
+
+        public Spotting() { }
         public Spotting(int spottingid, int userid, int beachid, DateTime spottingAt)
         {
             spottingid = spottingid;
