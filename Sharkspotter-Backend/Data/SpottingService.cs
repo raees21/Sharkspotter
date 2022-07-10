@@ -25,7 +25,7 @@ namespace Sharkspotter_Backend.Data
             return spottinges_list;
         }
 
-        public async Task<Spotting> getSpotting(Guid id)
+        public async Task<Spotting> getSpotting(int id)
         {
             Spotting spotting = await context.Spottings.FindAsync(id);
 

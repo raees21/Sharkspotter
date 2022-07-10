@@ -37,7 +37,7 @@ namespace Sharkspotter_Backend.Controller
         [HttpGet("{spottingId}")]
         [ProducesResponseType(typeof(Spotting), 200)]
 
-        public async Task<ActionResult<Spotting>> GetSpotting(Guid spottingId)
+        public async Task<ActionResult<Spotting>> GetSpotting(int spottingId)
         {
             var spotting = await spottingService.getSpotting(spottingId);
 
@@ -55,7 +55,7 @@ namespace Sharkspotter_Backend.Controller
         [ProducesResponseType(typeof(Spotting), 201)]
         public async Task<ActionResult<Spotting>> CreateSpotting(Spotting spotting)
         {
-            // Guid userId =  OAuth2.UserGuid(_httpContextAccessor);
+
             spottingService.CreateSpotting(spotting);
 
             return StatusCode(201, spotting);

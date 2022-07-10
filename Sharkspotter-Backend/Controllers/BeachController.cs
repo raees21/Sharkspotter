@@ -36,7 +36,7 @@ namespace Sharkspotter_Backend.Data
         [HttpGet("{beachId}")]
         [ProducesResponseType(typeof(Beach), 200)]
 
-        public async Task<ActionResult<Beach>> GetBeach(Guid beachId)
+        public async Task<ActionResult<Beach>> GetBeach(int beachId)
         {
             var beach = await beachService.getBeach(beachId);
             
@@ -54,7 +54,6 @@ namespace Sharkspotter_Backend.Data
         [ProducesResponseType(typeof(Beach), 201)]
         public async Task<ActionResult<Beach>> CreateBeach(Beach beach)
         {
-           // Guid userId =  OAuth2.UserGuid(_httpContextAccessor);
             beachService.CreateBeach(beach);
 
             return StatusCode(201, beach);

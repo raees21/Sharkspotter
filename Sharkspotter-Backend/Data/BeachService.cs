@@ -25,7 +25,7 @@ namespace Sharkspotter_Backend.Data
             return beaches_list;
         }
 
-        public async Task<Beach> getBeach(Guid id)
+        public async Task<Beach> getBeach(int id)
         {
             Beach beach = await context.Beaches.FindAsync(id);
 
