@@ -42,7 +42,7 @@ namespace Sharkspotter_Backend.Data
         public async Task<int> DeleteSpotting(int spottingId)
         {
 
-            Spotting spotting = await context.Spottings.FirstOrDefaultAsync(spotting => spotting.id == spottingId);
+            Spotting spotting = await context.Spottings.FirstOrDefaultAsync(spotting => spotting.spottingid == spottingId);
 
             if (spotting is null)
             {

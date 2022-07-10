@@ -2,29 +2,25 @@
 {
     public class Beach
     {
-        public int id { get; set; }
+        public int beachid { get; set; }
         public decimal latitude { get; set; }
         public decimal longitude { get; set; }
         public string beach_name { get; set; }
-        public DateTime created_at { get; set; }
-        public Beach() { }
-        public Beach(int beach_id, decimal latittude, decimal longitude, string beach_name, DateTime timestamp)
+        public Beach(int beachid, decimal latitude, decimal longitude, string beach_name)
         {
-            this.id = beach_id;
-            this.latitude = latittude;
+            this.beachid = beachid;
+            this.latitude = latitude;
             this.longitude = longitude;
             this.beach_name = beach_name;
-            this.created_at = timestamp;
 
         }
 
         public Beach(Beach beach)
         {
-            id = beach.id;
+            beachid = beach.beachid;
             longitude = beach.longitude;
             beach_name = beach.beach_name;
             latitude = beach.latitude;
-            created_at = beach.created_at;
         }
 
     }
