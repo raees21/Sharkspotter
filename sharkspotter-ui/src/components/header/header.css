@@ -1,0 +1,12 @@
+.App-header{
+    background-color: #282c34;
+    width:100%;
+    padding: 1rem;
+    
+}
+
+.logo{
+    font-weight: bold;
+    display: inline-block;
+    color: azure;
+}
