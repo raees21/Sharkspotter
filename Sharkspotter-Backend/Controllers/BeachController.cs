@@ -58,19 +58,6 @@ namespace Sharkspotter_Backend.Data
 
             return StatusCode(201, beach);
         }
-
-        /// <summary>
-        /// Remove a beach
-        /// </summary>
-        [HttpDelete("{beachId}")]
-
-        public async Task<ActionResult> DeleteBeach(int beachId) 
-        {
-            int code = await beachService.DeleteBeach(beachId);
- 
-            return StatusCode(code);
-        }
-
       
     }
 }
