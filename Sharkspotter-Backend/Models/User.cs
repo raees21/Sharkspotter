@@ -9,15 +9,15 @@
 
         public User(int userid, string user_name)
         {
-            userid = userid;
-            user_name = user_name;
+            this.userid = userid;
+            this.user_name = user_name;
 
         }
 
         public User(User user)
         {
-            userid = user.userid;
-            user_name = user.user_name;
+            this.userid = user.userid;
+            this.user_name = user.user_name;
         }
 
 
