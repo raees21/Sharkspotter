@@ -1,11 +1,16 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
+
     entry: './src/index.js',
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundlefile.js'
+    },
+    devServer: {
+        historyApiFallback: true
     },
     module: {
         rules : [
@@ -43,6 +48,7 @@ module.exports = {
            template: './public/index.html',
            favicon: './public/favicon.ico'
         }),
+        new Dotenv()
         //This get all our css and put in a unique file
         // new MiniCssExtractPlugin({
         //     filename: "styles.[contentHash].css",

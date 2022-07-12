@@ -1,14 +1,20 @@
 import React from 'react';
 import './header.css';
+import Button from '../button/button';
 
-function Header()  {
 
+import "./header.css";
+
+import { Link } from 'react-router-dom';
+
+function Header() {
     return (
         <header className="App-header">
-            <h1 className="logo">Sharkspotter</h1>
+            <h1 className="logo">
+                <Link to="/" className="logo-link">Sharkspotter</Link>
+            </h1>
             <section className="button-group">
-                <a href="#" className="login-button">Login</a>
-                <a href="#" className="register-button">Register</a>
+                <Button link_to="/testing" type="primary" text="Report a Sighting" />
             </section>
         </header>
     );
