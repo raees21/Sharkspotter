@@ -1,0 +1,123 @@
+
+main{
+    height: 84.7vh;
+}
+
+h1{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 72px;
+    text-align: center;
+    color: #F1F3F8;
+}
+
+span{
+    color: red;
+    margin-left: 10px;
+
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+    gap: 12px;
+}
+
+button{
+    align-items: center;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 18px;
+    width: 50%;
+    height: auto;
+    border: none;
+    color: #18A0FB;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.btn-white {
+    background: #F1F3F8;
+}
+
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn:active {
+    opacity: 0.5;
+}
+
+.control{
+    box-sizing: border-box;
+    padding: 12px 18px;
+    width: 100%;
+    border: 1px solid #F1F3F8;
+    border-radius: 4px;
+    resize: none;
+    background: none;
+    color: #F1F3F8;
+}
+
+.control:focus {
+    border: 1px solid #F1F3F8;
+}
+
+.required::before {
+    content: " *";
+    color: #F1F3F8;
+    display: inline;
+}
+
+.control-select {
+    position: relative;
+}
+
+.lbl {
+    text-align: start;
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #F1F3F8;
+}
+
+.lbl-center {
+    text-align: center;
+    width: 100%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #000000;
+}
+
+.text-center {
+    width: 100%;
+    text-align: center;;
+}
+
+input[type="date"]{
+    color: #F1F3F8;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    margin: 0px;
+}
+
+@media only screen and (max-width: 650px) {
+    h1{
+        font-size: 35px;
+        line-height: 60px;
+    }
+}
