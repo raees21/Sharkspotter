@@ -13,9 +13,9 @@ function App() {
       <Header />
       <main className="content">
         <Routes>
-            <Route index  element={<Home />} exact />
-            <Route path="testing" element={<Testing/>} />
-            <Route  element={<Error/>} />
+            <Route index  element={<Home />} />
+            <Route path="/testing" element={<Testing/>} />
+            <Route path="*" element={<Error/>} />
         </Routes>
       </main>
     </>

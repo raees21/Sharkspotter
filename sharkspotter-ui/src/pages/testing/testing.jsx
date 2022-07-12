@@ -4,7 +4,7 @@ import './testing.css';
 function Testing()  {
 
     return (
-        <h1>TESING PAGE</h1>
+        <h1>TESTING PAGE</h1>
     );
 }
 

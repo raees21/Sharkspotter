@@ -10,7 +10,7 @@ function Header() {
         <header className="App-header">
             <h1 className="logo">Sharkspotter</h1>
             <section className="button-group">
-                <Button type="primary" text="Report a Sighting" />
+                <Button link_to="/testing" type="primary" text="Report a Sighting" />
             </section>
         </header>
     );
