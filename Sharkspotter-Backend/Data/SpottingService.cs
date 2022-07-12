@@ -28,7 +28,7 @@ namespace Sharkspotter_Backend.Data
         public async Task<Spotting> getSpotting(int id)
         {
 
-            return await context.Spottings.FindAsync(id);
+            return await context.Spottings.FindAsync(id) ?? throw new ArgumentException();
         }
 
         public async void createSpotting(Spotting spotting)
@@ -41,7 +41,7 @@ namespace Sharkspotter_Backend.Data
         public async Task<int> DeleteSpotting(int spottingId)
         {
 
-            Spotting spotting = await context.Spottings.FirstOrDefaultAsync(spotting => spotting.spottingid == spottingId);
+            Spotting spotting = await context.Spottings.FirstOrDefaultAsync(spotting => spotting.spottingid == spottingId) ?? throw new ArgumentException();
 
             if (spotting is null)
             {

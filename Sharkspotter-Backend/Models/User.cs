@@ -3,7 +3,7 @@
     public class User
     {
         public int userid { get; set; }
-        public string user_name { get; set; }
+        public string user_name { get; set; } = "";
 
         public User() { }
 
