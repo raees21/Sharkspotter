@@ -4,17 +4,6 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup'
 import Select from 'react-select';
 
-const getBeaches = async() => {
-    let url = 'https://localhost:7213/api/v1/beaches';
-    try {
-        let res = await fetch(url);
-        return await res.json();
-    } catch (error) {
-        console.log(error);
-        return "Oops seems like something is wrong. Try again later"
-    }
-}
-
 function Spotting()  {
 
     const options = [
@@ -58,30 +47,27 @@ function Spotting()  {
             console.log("values")
         }
     })
-    console.log(formik.values)
-    console.log(getBeaches())
     return (
         <main>
         <h1>Have you spotted a shark ?</h1>
-        <form onSubmit={formik.handleSubmit} id="login" class="form-section">
-            <label for="beach" class="lbl">Beach<i class="required">{formik.touched.beach && formik.errors.beach ? <span>{formik.errors.beach}</span> : null}</i></label>
+        <form onSubmit={formik.handleSubmit} id="login" className="form-section">
+            <label className="lbl">Beach<i className="required">{formik.touched.beach && formik.errors.beach ? <span>{formik.errors.beach}</span> : null}</i></label>
             <div style={{width: '100%', color: '#18A0FB'}}>
-            <Select options={getBeaches()} placeholder="" value={options ? options.find((option) => option.value === formik.values.beach) : ""} onChange={(option) => {formik.setFieldValue("beach", option.value);}} onBlur={formik.handleBlur} styles={selectStyles}/>
+            <Select options={options} placeholder="" value={options ? options.find((option) => option.value === formik.values.beach) : ""} onChange={(option) => {formik.setFieldValue("beach", option.value);}} onBlur={formik.handleBlur} styles={selectStyles}/>
             </div>
             
-            <label for="sharkType" class="lbl">Shark Type</label>
+            <label className="lbl">Shark Type</label>
             <div style={{width: '100%', color: '#18A0FB'}}>
             <Select options={options} placeholder="" value={options ? options.find((option) => option.value === formik.values.sharkType) : ""} onChange={(option) => {formik.setFieldValue("sharkType", option.value);}} styles={selectStyles}/>
             </div>
 
-            <label for="date" class="lbl">Date<i class="required">{formik.touched.date && formik.errors.date ? <span>{formik.errors.date}</span> : null}</i></label>
-            <input id="date" name="date" type="date" onKeyDown={(e) => e.preventDefault()} class="control" placeholder="" onChange={formik.handleChange} value={formik.values.date} onBlur={formik.handleBlur} />
+            <label className="lbl">Date<i className="required">{formik.touched.date && formik.errors.date ? <span>{formik.errors.date}</span> : null}</i></label>
+            <input id="date" name="date" type="date" onKeyDown={(e) => e.preventDefault()} className="control" placeholder="" onChange={formik.handleChange} value={formik.values.date} onBlur={formik.handleBlur} />
 
-            <label for="comment" class="lbl">Comment<i>{formik.errors.comment ? <span>{formik.errors.comment}</span> : null}</i></label>
-            <textarea rows='8' cols='50' id="comment" name="comment" type="textfield" class="control" placeholder="" onChange={formik.handleChange} value={formik.values.comment} onBlur={formik.handleBlur}></textarea>
+            <label className="lbl">Comment<i>{formik.errors.comment ? <span>{formik.errors.comment}</span> : null}</i></label>
+            <textarea rows='8' cols='50' id="comment" name="comment" type="textfield" className="control" placeholder="" onChange={formik.handleChange} value={formik.values.comment} onBlur={formik.handleBlur}></textarea>
 
-            <p id="status" class="text-danger"></p>
-            <button type="submit" class="btn btn-white">Submit</button>
+            <button type="submit" className="btn btn-white">Submit</button>
         </form>
     </main>
     );

@@ -1,4 +1,8 @@
 
+main{
+    height: 84.7vh;
+}
+
 h1{
     font-style: normal;
     font-weight: 400;
@@ -56,12 +60,8 @@ button{
 
 .control{
     box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     padding: 12px 18px;
     width: 100%;
-    height: auto;
     border: 1px solid #F1F3F8;
     border-radius: 4px;
     resize: none;
@@ -115,6 +115,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 0px;
 }
 
-@media only screen and (max-width: 500px) {
-    
+@media only screen and (max-width: 650px) {
+    h1{
+        font-size: 35px;
+        line-height: 60px;
+    }
 }
