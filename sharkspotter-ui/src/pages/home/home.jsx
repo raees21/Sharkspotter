@@ -10,23 +10,41 @@ const fakeData = [
         description:"Muizenberg is a small town outside Cape Town and one of South Africa’s best kept secrets. A largely untapped tourist spot,it’s hard to believe Muizenberg is best known for being one of the most popular beaches with one of the most active surfing communities in South Africa.",
         date: "01 July 2022",
         coordinates: {lat: -34.10864306234767, lng: 18.470190339933083},
-        position:"left"
+        position:"left",
+        coordinates: { lat: -34.10864306234767, lng: 18.470190339933083 },
+        spottings: [
+            { date: '9 July 2022', comment: 'A great white was spotted swimming along the coast, occasionally approaching the beach' },
+            {date: '7 July 2022', comment: 'A great white was spotted swimming along the coast'},
+            {date: '1 July 2022', comment: 'A great white was spotted swimming along the coast'},
+        ]
     },
     {
         id:2,
         title:"Muizenberg",
         description:"Muizenberg is a small town outside Cape Town and one of South Africa’s best kept secrets. A largely untapped tourist spot,it’s hard to believe Muizenberg is best known for being one of the most popular beaches with one of the most active surfing communities in South Africa.",
         date: "01 July 2022",
-        coordinates: {lat: -34.10864306234767, lng: 18.470190339933083},
-        position:"right"
+        position:"right",
+        coordinates: { lat: -34.10864306234767, lng: 18.470190339933083 },
+        spottings: [
+            { date: '9 July 2022', comment: 'A great white was spotted swimming along the coast, occasionally approaching the beach' },
+            {date: '7 July 2022', comment: 'A great white was spotted swimming along the coast'},
+            {date: '1 July 2022', comment: 'A great white was spotted swimming along the coast'},
+        ]
+        
     },
     {
         id:3,
         title:"Muizenberg",
         description:"Muizenberg is a small town outside Cape Town and one of South Africa’s best kept secrets. A largely untapped tourist spot,it’s hard to believe Muizenberg is best known for being one of the most popular beaches with one of the most active surfing communities in South Africa.",
         date: "01 July 2022",
-        coordinates: {lat: -34.10864306234767, lng: 18.470190339933083},
-        position:"left"
+        position:"left",
+        coordinates: { lat: -34.10864306234767, lng: 18.470190339933083 },
+        spottings: [
+            { date: '9 July 2022', comment: 'A great white was spotted swimming along the coast, occasionally approaching the beach' },
+            {date: '7 July 2022', comment: 'A great white was spotted swimming along the coast'},
+            {date: '1 July 2022', comment: 'A great white was spotted swimming along the coast'},
+            
+        ]
     }
 ]
 

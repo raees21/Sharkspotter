@@ -1,0 +1,53 @@
+.main-title{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 72px;
+    text-align: center;
+    color: #F1F3F8;
+}
+
+.sub-title{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 50px;
+    text-align: center;
+    color: #F1F3F8;
+    margin: 0;
+}
+
+.map-card{
+    width: 1062px;
+    height: 404px;
+}
+
+.spottings-listing{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-items: center;
+    width: 936px;
+    margin-top: 16px;
+}
+
+.spottings-text{
+    padding-left: 10px;
+}
+
+.spottings-icon{
+    height: 70px;
+    width: 70px;
+}
+
+@media  screen and (max-width:500px) {
+    .main-title{
+        font-size: 35px;
+    }
+
+    .sub-title{
+        font-size: 25px;
+    }
+    
+}
+

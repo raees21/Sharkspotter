@@ -5,10 +5,13 @@
   "dependencies": {
     "@react-google-maps/api": "^2.12.0",
     "dotenv-webpack": "^8.0.0",
+    "formik": "^2.2.9",
     "@auth0/auth0-react": "^1.10.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "react-select": "^5.4.0",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
