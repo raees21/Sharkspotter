@@ -19,32 +19,6 @@
   margin-left: auto;
 }
 
-.login-button {
-  background: #ffffff;
-  border: 1px solid #18a0fb;
-  border-radius: 6px;
-  color: #18a0fb;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 18px;
-  padding: 10px 40px;
-  text-decoration: none;
-  margin-right: 20px;
-}
-
-.register-button {
-  background: #18a0fb;
-  border-radius: 6px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 18px;
-  color: #ffffff;
-  padding: 10px 40px;
-  text-decoration: none;
-}
-
 @media screen and (max-width:500px){
     .App-header{
         justify-content: center;
