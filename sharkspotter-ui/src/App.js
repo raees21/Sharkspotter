@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 import './App.css';
 import Home from './pages/home/home'
@@ -11,11 +12,12 @@ import Sightings from './pages/past-sightings/sightings';
 import Loading from './components/loading';
 
 function App() {
-  const { isLoading } = useAuth0();
+  // const { isLoading } = useAuth0();
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
+
   return (
     <> 
       <Header />
