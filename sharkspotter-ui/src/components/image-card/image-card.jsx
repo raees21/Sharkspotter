@@ -1,10 +1,10 @@
 import React from 'react';
 import './image-card.css';
 
-import map from '../../images/map.png';
+import Map from '../map/map';
 
 function ImageCard(props)  {
-    const {title,text,date,position="right"} = props;
+    const {title,text,date,position="right", coordinates: {lat, lng}} = props;
 
     return (
        <article className={`image-card ${position=="right" ? "image-right" : "image-left"}`}>
@@ -13,7 +13,9 @@ function ImageCard(props)  {
                 <p className="image-card-text">{text}</p>
                 <p className="image-card-date">Date: {date}</p>
             </section>
-            <img className="image-card-image" src={map} alt="Map"/>
+            <section className="image-card-image">
+                <Map mLat={lat} mLng={lng} />
+            </section>
        </article>
     );
 }
