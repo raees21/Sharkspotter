@@ -8,8 +8,14 @@ import Error from './pages/error/error';
 import Header from './components/header/header';
 import Spotting from './pages/spotting/spotting';
 import Sightings from './pages/past-sightings/sightings';
+import Loading from './components/loading';
 
 function App() {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <> 
       <Header />
