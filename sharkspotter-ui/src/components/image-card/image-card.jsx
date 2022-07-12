@@ -2,6 +2,7 @@ import React from 'react';
 import './image-card.css';
 
 import Map from '../map/map';
+import Button from '../button/button';
 
 function ImageCard(props)  {
     const {title,text,date,position="right", coordinates: {lat, lng}} = props;
@@ -12,6 +13,7 @@ function ImageCard(props)  {
                 <h4 className="image-card-title">{title}</h4>
                 <p className="image-card-text">{text}</p>
                 <p className="image-card-date">Date: {date}</p>
+                <Button link_to="/testing" type="secondary" text="View More" />
             </section>
             <section className="image-card-image">
                 <Map mLat={lat} mLng={lng} />

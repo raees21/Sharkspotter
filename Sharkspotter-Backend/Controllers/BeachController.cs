@@ -52,7 +52,7 @@ namespace Sharkspotter_Backend.Data
         /// </summary>
         [HttpPost]
         [ProducesResponseType(typeof(Beach), 201)]
-        public async Task<ActionResult<Beach>> CreateBeach(Beach beach)
+        public ActionResult<Beach> CreateBeach(Beach beach)
         {
             beachService.CreateBeach(beach);
 
