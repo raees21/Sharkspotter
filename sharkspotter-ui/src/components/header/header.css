@@ -1,12 +1,57 @@
-.App-header{
-    background-color: #282c34;
-    width:100%;
-    padding: 1rem;
-    
+.App-header {
+  padding: 25px;
+  background: rgba(16, 120, 190, 0.75);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.logo{
-    font-weight: bold;
-    display: inline-block;
-    color: azure;
+.logo {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #f1f3f8;
+  margin: 0;
+}
+
+.button-group {
+  margin-left: auto;
+}
+
+.login-button {
+  background: #ffffff;
+  border: 1px solid #18a0fb;
+  border-radius: 6px;
+  color: #18a0fb;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  padding: 10px 40px;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.register-button {
+  background: #18a0fb;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: #ffffff;
+  padding: 10px 40px;
+  text-decoration: none;
+}
+
+@media screen and (max-width:500px){
+    .App-header{
+        justify-content: center;
+    }
+    .button-group{
+        margin:0;
+        margin-top: 25px;
+    }
+
 }
