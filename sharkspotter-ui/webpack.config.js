@@ -9,6 +9,9 @@ module.exports = {
         path: path.join(__dirname, 'dist'),
         filename: 'bundlefile.js'
     },
+    devServer: {
+        historyApiFallback: true
+    },
     module: {
         rules : [
             {

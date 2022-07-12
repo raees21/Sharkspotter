@@ -15,6 +15,10 @@
   margin: 0;
 }
 
+.logo-link{
+  text-decoration: none;
+  color: #f1f3f8;
+}
 .button-group {
   margin-left: auto;
 }

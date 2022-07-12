@@ -13,7 +13,7 @@ function ImageCard(props)  {
                 <h4 className="image-card-title">{title}</h4>
                 <p className="image-card-text">{text}</p>
                 <p className="image-card-date">Date: {date}</p>
-                <Button type="secondary" text="View More" />
+                <Button link_to="/testing" type="secondary" text="View More" />
             </section>
             <section className="image-card-image">
                 <Map mLat={lat} mLng={lng} />
