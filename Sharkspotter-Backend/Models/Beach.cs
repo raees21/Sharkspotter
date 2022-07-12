@@ -19,10 +19,10 @@
 
         public Beach(Beach beach)
         {
-            beachid = beach.beachid;
-            longitude = beach.longitude;
-            beach_name = beach.beach_name;
-            latitude = beach.latitude;
+            this.beachid = beach.beachid;
+            this.longitude = beach.longitude;
+            this.beach_name = beach.beach_name;
+            this.latitude = beach.latitude;
         }
 
     }
