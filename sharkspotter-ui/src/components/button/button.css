@@ -1,0 +1,22 @@
+.generic-button {
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  padding: 10px 40px;
+  text-decoration: none;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.primary {
+  background: #ffffff;
+  border: 1px solid #18a0fb;
+  color: #18a0fb;
+}
+
+.secondary {
+  background: #18a0fb;
+  color: #ffffff;
+}
