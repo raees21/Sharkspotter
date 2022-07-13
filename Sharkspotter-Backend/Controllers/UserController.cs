@@ -17,15 +17,7 @@ namespace Sharkspotter_Backend.Data
         public IActionResult createUser(User user)
         {
             var result = uService.CreateUser(user);
-            
-            if(result == 1)
-            {
-                return Ok("User was successfully created");
-            }
-            else
-            {
-                return Ok("Error : Failed to create user");
-            }
+            return StatusCode(201, user);
         }
 
         [HttpGet("getAll")]

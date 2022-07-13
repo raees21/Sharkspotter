@@ -22,6 +22,7 @@ namespace Sharkspotter_Backend.Data
         /// Get all beaches
         /// </summary>
         [HttpGet]
+        [Authorize("read:beaches")]
         [ProducesResponseType(typeof(IEnumerable<Beach>), 200)]
         public async Task<ActionResult<IEnumerable<Beach>>> GetBeaches()
         {

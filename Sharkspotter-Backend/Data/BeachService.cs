@@ -27,7 +27,7 @@ namespace Sharkspotter_Backend.Data
 
         public async Task<Beach> getBeach(int id)
         {
-            Beach beach = await context.Beaches.FindAsync(id);
+            Beach beach = await context.Beaches.FindAsync  (id);
 
             return beach;
         }
@@ -38,28 +38,6 @@ namespace Sharkspotter_Backend.Data
             await context.SaveChangesAsync();
           
         }
-
-        public async Task<int> DeleteBeach(int beachId)
-        {
-    
-            Beach beach = await context.Beaches.FirstOrDefaultAsync(beach => beach.beachid == beachId);
-
-            if (beach is null)
-            {
-                return 404;
-            }
-
-            context.Beaches.Remove(beach);
-
-            await context.SaveChangesAsync();
-
-            return 200;
-
-    
-        }
-
-
-
 
     }
 }

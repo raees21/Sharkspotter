@@ -35,6 +35,7 @@ namespace Sharkspotter_Backend.Controller
         /// Get a single product
         /// </summary>
         [HttpGet("{spottingId}")]
+        [Authorize("read:spotting")]
         [ProducesResponseType(typeof(Spotting), 200)]
 
         public async Task<ActionResult<Spotting>> GetSpotting(int spottingId)
@@ -52,7 +53,7 @@ namespace Sharkspotter_Backend.Controller
         /// Create a new spotting
         /// </summary>
         [HttpPost]
-        [Authorize("post:spotting")]
+        //[Authorize("update:spottings")]
         [ProducesResponseType(typeof(Spotting), 201)]
         public async Task<ActionResult<Spotting>> CreateSpotting(Spotting spotting)
         {
@@ -62,5 +63,10 @@ namespace Sharkspotter_Backend.Controller
             return StatusCode(201, spotting);
         }
 
+        [HttpGet("spottingsByBeach{beachId}")]
+        public List<Spotting> getSpottingsByBeachId(int beachId)
+        {
+            return spottingService.getSpottingsByBeachId(beachId);
+        }
     }
 }

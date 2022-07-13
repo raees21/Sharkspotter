@@ -39,27 +39,10 @@ namespace Sharkspotter_Backend.Data
 
         }
 
-        public async Task<int> DeleteSpotting(int spottingId)
+        public List<Spotting> getSpottingsByBeachId(int beachId)
         {
-
-            Spotting spotting = await context.Spottings.FirstOrDefaultAsync(spotting => spotting.spottingid == spottingId);
-
-            if (spotting is null)
-            {
-                return 404;
-            }
-
-            context.Spottings.Remove(spotting);
-
-            await context.SaveChangesAsync();
-
-            return 200;
-
-
+            var spottings = context.Spottings.Where(s => s.beachid == beachId).ToList();
+            return spottings;
         }
-
-
-
-
     }
 }
