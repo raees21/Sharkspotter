@@ -34,14 +34,24 @@ const fakeData = [
 function Home() {
     const [beachData, setBeachData] = useState();
     const { getAccessToken } = useAuth();
+    // useEffect(() => {
+    //     ( async () => {
+    //         const accessToken = getAccessToken();
+    //         console.log(accessToken);
+    //     })()
+    // },[])
+
+    // authorization: `Bearer ${token}`,
     useEffect(() => {
         const fetchData = async () => {
-            const token = getAccessToken();
+            const token = "hello" || getAccessToken();
             const baseUrl = 'https://localhost:7213' //TODO to be changed to production url
             const method = 'GET';
             const endpoint = '/api/v1/beaches'
             const options = {
-                headers: { authorization: `Bearer ${token}` }
+                headers: {
+                    'Access-Control-Allow-Origin' : 'http://localhost:8080'
+                }
             };
             const response = await request({ baseUrl, method, endpoint, options });
             const data = response.json();
@@ -58,7 +68,7 @@ function Home() {
             setBeachData(mappedData);
             console.log(data,mappedData);
         }
-
+        fetchData();
     }, []);
 
     return (

@@ -20,7 +20,6 @@ function Map({width='100%', height='100%', mLat, mLng }) {
       };
       const onLoad = useCallback(function callback(map) {
         const bounds = new window.google.maps.LatLngBounds(center);
-          map.setCenter(bounds);
           map.setZoom(16);
         setMap(map)
       }, [])

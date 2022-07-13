@@ -3,7 +3,6 @@ import { request } from './request-service';
 const client_id = process.env.REACT_APP_CLIENT_ID;
 const client_secret = process.env.REACT_APP_CLIENT_SECRET;
 const baseURL = process.env.REACT_APP_AUTH_DOMAIN;
-
 let accessToken = '';
 let expiresIn = 0;
 
@@ -19,7 +18,7 @@ export function useAuth() {
       grant_type: "client_credentials"
     }
 
-    const authRequest = await request({ baseURL, endpoint, method, data, options: { headers } });
+    const authRequest = await request({ baseUrl: baseURL, endpoint, method, data, options: { headers } });
     return authRequest;
   };
 
