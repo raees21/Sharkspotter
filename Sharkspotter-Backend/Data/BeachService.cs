@@ -17,29 +17,21 @@ namespace Sharkspotter_Backend.Data
             context.SaveChanges();
             return 1;
         }
-        public List<Dictionary<string,string>> getAllBeaches()
+        public List<BeachB> getAllBeaches()
         {
             var beaches = context.Beaches.ToList();
             var beaches_list = new List<Beach>();
-            var final_list = new List<Dictionary<string,string>>();
+            var final_list = new List<BeachB>();
             beaches.ForEach(u => beaches_list.Add(u));
             foreach(Beach beach in beaches){
-                var map = new Dictionary<string, string>();
                 var spotting = context.Spottings.Where(s=>s.beachid == beach.beachid).ToList();
                 DateTime date =new DateTime();
                 if(spotting.Count()>0){
                     date = spotting[spotting.Count()-1].spottingAt;
                 }
                 
-                map.Add("beachId", beach.beachid.ToString());
-                map.Add("latitude", beach.latitude.ToString());
-                map.Add("longitude", beach.longitude.ToString());
-                map.Add("beach_name", beach.beach_name);
-                map.Add("description", beach.description);
-                if(spotting.Count()>0){
-                    map.Add("date", date.ToString());
-                }                                
-                final_list.Add(map);
+                 BeachB beachb = new BeachB(beach.beachid, beach.latitude, beach.longitude, beach.beach_name, beach.description, date);                            
+                final_list.Add(beachb);
             }
             return final_list;
         }

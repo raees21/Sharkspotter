@@ -22,10 +22,10 @@ namespace Sharkspotter_Backend.Data
         /// Get all beaches
         /// </summary>
         [HttpGet]
-        [Authorize("read:beaches")]
-        public async Task<ActionResult<List<Dictionary<string,string>>>> GetBeaches()
+        //[Authorize("read:beaches")]
+        public async Task<ActionResult<List<BeachB>>> GetBeaches()
         {
-            List<Dictionary<string,string>> beaches =  beachService.getAllBeaches();
+            List<BeachB> beaches =  beachService.getAllBeaches();
             
             return StatusCode(200, beaches);
         }
