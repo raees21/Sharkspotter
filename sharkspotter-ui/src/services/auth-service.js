@@ -1,25 +1,25 @@
-import { request } from './request-service';
+import fetch from 'node-fetch';
 
 const client_id = process.env.REACT_APP_CLIENT_ID;
 const client_secret = process.env.REACT_APP_CLIENT_SECRET;
 const baseURL = process.env.REACT_APP_AUTH_DOMAIN;
-
 let accessToken = '';
 let expiresIn = 0;
 
 export function useAuth() {
   const getAuthCode = async () => {
     const method = 'POST';
-    const endpoint = '/oauth/token';
+    const endpoint = `${baseURL}/oauth/token`;
     const headers = { 'content-type': 'application/json' };
-    const data = {
+    const body = {
       client_id,
       client_secret,
       audience: "https://sharkspotterapi.com",
       grant_type: "client_credentials"
     }
 
-    const authRequest = await request({ baseURL, endpoint, method, data, options: { headers } });
+    const response = await fetch(endpoint, { method, body, headers });
+    const authRequest = await response.json();
     return authRequest;
   };
 
