@@ -1,22 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./spotting.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Select from "react-select";
-import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Spotting() {
-  const { logout } = useAuth0();
-  const sharks = [
-    { value: "Great White Shark", label: "Great White" },
-    { value: "Whale Shark", label: "Whale Shark" },
-    { value: "Tiger Shark", label: "Tiger Shark" },
-  ];
+  const [beachNames, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const beachOptions = [
-    { value: "Thompsons Bay", label: "Thompsons Bay" },
-    { value: "Camps Bay", label: "Camps Bay" },
-    { value: "Muizenberg", label: "Muizenberg" },
+  const Navigate = useNavigate();
+
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get("https://localhost:7213/api/v1/beaches")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, ["https://localhost:7213/api/v1/beaches"]);
+
+  const arr = beachNames.map((beachNames, index) => {
+    return {
+      value: beachNames.beach_name,
+      label: beachNames.beach_name,
+      bID: beachNames.beachid,
+    };
+  });
+
+  const sharkTypes = [
+    { value: "thresher", label: "Thresher" },
+    { value: "white", label: "White" },
+    { value: "sand", label: "Sand" },
+    { value: "basking", label: "Basking" },
+    { value: "rough", label: "Rough" },
   ];
 
   const selectStyles = {
@@ -40,47 +65,55 @@ function Spotting() {
 
   const formik = useFormik({
     initialValues: {
-      beach: "",
+      userid: null,
+      beachid: null,
       sharkType: "",
-      date: "",
+      spottingAt: "",
       comment: "",
     },
     validationSchema: Yup.object({
-      beach: Yup.string().required("Required"),
-      date: Yup.string().required("Required"),
+      beachid: Yup.number().typeError("Required").required("Required"),
+      spottingAt: Yup.string().required("Required"),
       comment: Yup.string().max(250, "Must be 250 characters or less"),
     }),
     onSubmit: (values) => {
-      // SEND values
-      console.log(values);
-    //   logout({ returnTo: window.location.origin });
+      values.spottingAt = values.spottingAt + "T16:33:58.52";
+      values.userid = 13;
+      values.beachid = parseInt(values.beachid);
+      try {
+        const resp = axios.post(
+          "https://localhost:7213/api/v1/spottings",
+          values
+        );
+      } catch (error) {
+        console.log(error);
+      }
+      Navigate("/");
     },
   });
   return (
-    <main className="form-main">
+    <main className="spotting-main">
       <h1>Have you spotted a shark ?</h1>
-      <form onSubmit={formik.handleSubmit} id="login" className="form-section">
+      <form onSubmit={formik.handleSubmit} className="form-section">
         <label className="lbl">
           Beach
           <i className="required">
-            {formik.touched.beach && formik.errors.beach ? (
-              <span>{formik.errors.beach}</span>
+            {formik.touched.beachid && formik.errors.beachid ? (
+              <span>{formik.errors.beachid}</span>
             ) : null}
           </i>
         </label>
         <div style={{ width: "100%", color: "#18A0FB" }}>
           <Select
-            options={beachOptions}
+            options={arr}
             placeholder=""
             value={
-              beachOptions
-                ? beachOptions.find(
-                    (beachOptions) => beachOptions.value === formik.values.beach
-                  )
+              arr
+                ? arr.find((option) => option.value === formik.values.beach)
                 : ""
             }
-            onChange={(beachOptions) => {
-              formik.setFieldValue("beach", beachOptions.value);
+            onChange={(option) => {
+              formik.setFieldValue("beachid", option.bID);
             }}
             onBlur={formik.handleBlur}
             styles={selectStyles}
@@ -90,17 +123,17 @@ function Spotting() {
         <label className="lbl">Shark Type</label>
         <div style={{ width: "100%", color: "#18A0FB" }}>
           <Select
-            options={sharks}
+            options={sharkTypes}
             placeholder=""
             value={
-              sharks
-                ? sharks.find(
-                    (sharks) => sharks.value === formik.values.sharkType
+              sharkTypes
+                ? sharkTypes.find(
+                    (option) => option.value === formik.values.sharkType
                   )
                 : ""
             }
-            onChange={(sharks) => {
-              formik.setFieldValue("sharkType", sharks.value);
+            onChange={(option) => {
+              formik.setFieldValue("sharkType", option.value);
             }}
             styles={selectStyles}
           />
@@ -109,20 +142,20 @@ function Spotting() {
         <label className="lbl">
           Date
           <i className="required">
-            {formik.touched.date && formik.errors.date ? (
-              <span>{formik.errors.date}</span>
+            {formik.touched.spottingAt && formik.errors.spottingAt ? (
+              <span>{formik.errors.spottingAt}</span>
             ) : null}
           </i>
         </label>
         <input
-          id="date"
-          name="date"
+          id="spottingAt"
+          name="spottingAt"
           type="date"
           onKeyDown={(e) => e.preventDefault()}
           className="control"
           placeholder=""
           onChange={formik.handleChange}
-          value={formik.values.date}
+          value={formik.values.spottingAt}
           onBlur={formik.handleBlur}
         />
 

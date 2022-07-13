@@ -22,10 +22,10 @@ namespace Sharkspotter_Backend.Data
         /// Get all beaches
         /// </summary>
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Beach>), 200)]
-        public async Task<ActionResult<IEnumerable<Beach>>> GetBeaches()
+        //[Authorize("read:beaches")]
+        public async Task<ActionResult<List<Dictionary<string,string>>>> GetBeaches()
         {
-            IEnumerable<Beach> beaches =  beachService.getAllBeaches();
+            List<BeachB> beaches =  beachService.getAllBeaches();
             
             return StatusCode(200, beaches);
         }
@@ -52,25 +52,12 @@ namespace Sharkspotter_Backend.Data
         /// </summary>
         [HttpPost]
         [ProducesResponseType(typeof(Beach), 201)]
-        public ActionResult<Beach> CreateBeach(Beach beach)
+        public async Task<ActionResult<Beach>> CreateBeach(Beach beach)
         {
             beachService.CreateBeach(beach);
 
             return StatusCode(201, beach);
         }
-
-        /// <summary>
-        /// Remove a beach
-        /// </summary>
-        [HttpDelete("{beachId}")]
-
-        public async Task<ActionResult> DeleteBeach(int beachId) 
-        {
-            int code = await beachService.DeleteBeach(beachId);
- 
-            return StatusCode(code);
-        }
-
       
     }
 }

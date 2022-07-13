@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sharkspotter_Backend.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Sharkspotter_Backend.Data
 {
@@ -16,18 +17,11 @@ namespace Sharkspotter_Backend.Data
         public IActionResult createUser(User user)
         {
             var result = uService.CreateUser(user);
-            
-            if(result == 1)
-            {
-                return Ok("User was successfully created");
-            }
-            else
-            {
-                return Ok("Error : Failed to create user");
-            }
+            return StatusCode(201, user);
         }
 
         [HttpGet("getAll")]
+        [Authorize("read:users")]
         public List<User> getAllUsers()
         {
             return uService.getAllUsers();

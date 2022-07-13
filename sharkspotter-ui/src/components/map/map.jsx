@@ -1,7 +1,7 @@
 import React, { useState, useCallback, memo } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';  
 
-const apiKey = process.env.REACT_APP_API_KEY;
+const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
 function Map({width='100%', height='100%', mLat, mLng }) {
     
@@ -19,9 +19,8 @@ function Map({width='100%', height='100%', mLat, mLng }) {
         height
       };
       const onLoad = useCallback(function callback(map) {
-        const bounds = new window.google.maps.LatLngBounds(center);
-          map.setCenter(bounds);
-          map.setZoom(16);
+        new window.google.maps.LatLngBounds(center);
+        map.setZoom(16);
         setMap(map)
       }, [])
     

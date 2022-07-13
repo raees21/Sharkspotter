@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "^2.12.0",
+    "@auth0/auth0-react": "^1.10.2",
+    "axios": "^0.27.2",
     "dotenv-webpack": "^8.0.0",
     "formik": "^2.2.9",
-    "@auth0/auth0-react": "^1.10.2",
+    "luxon": "^3.0.1",
+    "node-fetch": "^2.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
