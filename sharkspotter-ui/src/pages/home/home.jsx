@@ -1,7 +1,7 @@
-import React from 'react';
 import './home.css';
-
+import React, { useState, useEffect } from 'react';
 import ImageCard from '../../components/image-card/image-card';
+import { useAuth, request } from '../../services';
 
 const fakeData = [
     {
@@ -31,7 +31,35 @@ const fakeData = [
 ]
 
 
-function Home()  {
+function Home() {
+    const [beachData, setBeachData] = useState();
+    const { getAccessToken } = useAuth();
+    useEffect(() => {
+        const fetchData = async () => {
+            const token = getAccessToken();
+            const baseUrl = 'https://localhost:7213' //TODO to be changed to production url
+            const method = 'GET';
+            const endpoint = '/api/v1/beaches'
+            const options = {
+                headers: { authorization: `Bearer ${token}` }
+            };
+            const response = await request({ baseUrl, method, endpoint, options });
+            const data = response.json();
+            const mappedData = data.map(({ beachid, latitude, longitude, beach_name, description }, index) => {
+                return {
+                    id: beachid,
+                    title: beach_name,
+                    coordinates: { lat: latitude, lng: longitude },
+                    position: index % 2 == 0 ? "left" : "right",
+                    date: new Date().toString().split('GMT')[0],
+                    description
+                }
+            })
+            setBeachData(mappedData);
+            console.log(data,mappedData);
+        }
+
+    }, []);
 
     return (
         <>
