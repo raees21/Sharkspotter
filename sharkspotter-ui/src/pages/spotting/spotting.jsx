@@ -48,7 +48,7 @@ function Spotting()  {
         }
     })
     return (
-        <main>
+        <main className='spotting-main'>
         <h1>Have you spotted a shark ?</h1>
         <form onSubmit={formik.handleSubmit} id="login" className="form-section">
             <label className="lbl">Beach<i className="required">{formik.touched.beach && formik.errors.beach ? <span>{formik.errors.beach}</span> : null}</i></label>

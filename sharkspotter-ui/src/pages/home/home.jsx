@@ -6,7 +6,7 @@ import fetch from 'node-fetch';
 import { DateTime } from 'luxon';
 
 function Home() {
-    const [beachData, setBeachData] = useState([]);
+    const [beachData, setBeachData] = useState([{coordinates: { lat: 0, lng: 0 },}]);
     const { getAccessToken } = useAuth();
     useEffect(() => {
         const fetchData = async () => {
@@ -41,8 +41,8 @@ function Home() {
             <h1 className='main-title'>Shark Spotter</h1>
             <p className='sub-title'>These are the beaches with the most recent shark sightings</p>
             {
-                beachData.map(({id, title, description, date, position, coordinates}) =>(
-                    <ImageCard key={id} id={id}  title={title} text={description} date={date} position={position} coordinates={coordinates} />
+                beachData.map(({id, title, description, date, position, coordinates},index) =>(
+                    <ImageCard key={index} beachId={id}  title={title} text={description} date={date} position={position} coordinates={coordinates} />
                 ))
             }
         </>

@@ -8,7 +8,7 @@ import { DateTime } from 'luxon';
 const baseUrl = 'https://localhost:7213';
 
 function Sightings() {
-    const { id } = useParams();
+    const { beachId } = useParams();
     const [beachData, setBeachData] = useState([]);
     const [beachName, setBeachName] = useState();
     const [coordinates, setBeachCoordinates] = useState({ lat: 0, lng: 0 });
@@ -16,8 +16,8 @@ function Sightings() {
     useEffect(() => {
         const fetchData = async () => {
             const token = '';
-            const spottingUrl = `${baseUrl}/api/v1/spottings/spottingsByBeach${id}`; //TODO to be changed to production url
-            const beachUrl = `${baseUrl}/api/v1/beaches/${id}`;
+            const spottingUrl = `${baseUrl}/api/v1/spottings/spottingsByBeach${beachId}`; //TODO to be changed to production url
+            const beachUrl = `${baseUrl}/api/v1/beaches/${beachId}`;
             const method = 'GET';
             const headers = {
                 "authorization": `Bearer ${token}`,
@@ -29,7 +29,6 @@ function Sightings() {
             const spottingData = await responseSpotting.json();
             const responseBeach = await fetch(beachUrl, { method, headers });
             const beachData = await responseBeach.json();
-            console.log(beachData);
             const mappedSpottingData = spottingData.map(({ spottingAt, comment }) => {
                 return {
                     date: spottingAt,

@@ -23,7 +23,7 @@ namespace Sharkspotter_Backend.Data
         /// </summary>
         [HttpGet]
         //[Authorize("read:beaches")]
-        public async Task<ActionResult<List<BeachB>>> GetBeaches()
+        public async Task<ActionResult<List<Dictionary<string,string>>>> GetBeaches()
         {
             List<BeachB> beaches =  beachService.getAllBeaches();
             
