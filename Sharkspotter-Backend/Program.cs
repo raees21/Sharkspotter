@@ -31,17 +31,21 @@ builder.Services
     });
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("read:users", policy => policy.Requirements.Add(new HasScopeRequirement("read:users", domain)));
+    options.AddPolicy("read:beaches", policy => policy.Requirements.Add(new HasScopeRequirement("read:users", domain)));
 });
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("post:spotting", policy => policy.Requirements.Add(new HasScopeRequirement("post:spotting", domain)));
+    options.AddPolicy("read:spottings_by_beach_id", policy => policy.Requirements.Add(new HasScopeRequirement("post:spotting", domain)));
+});
+builder.Services.AddAuthorization(options =>
+{
+  options.AddPolicy("update:spottings_by_beach_id", policy => policy.Requirements.Add(new HasScopeRequirement("post:spotting", domain)));
 });
 
 builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
 builder.Services.AddDbContext<DataContext>(
-    options => options.UseSqlServer(GetSecretsClass.GetSecret()));
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("SharkspotterDB")));
 
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<BeachService>();
