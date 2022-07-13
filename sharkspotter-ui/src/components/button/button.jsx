@@ -11,21 +11,19 @@ function Button(props) {
   if (auth) {
     
     return isAuthenticated ? (
-      <Link
-        to={`${link_to}`}
+      <a
         onClick={() => logout({ returnTo: window.location.origin })}
         className={`generic-button ${type}`}
       >
         Log out
-      </Link>
+      </a>
     ) : (
-      <Link
-        to={`${link_to}`}
+      <a
         onClick={() => loginWithPopup()}
         className={`generic-button ${type}`}
       >
-        Log in
-      </Link>
+        Report a sighting
+      </a>
     );
   } else {
     return (

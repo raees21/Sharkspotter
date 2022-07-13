@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './home.css';
 
 import ImageCard from '../../components/image-card/image-card';
+import { Navigate, useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const fakeData = [
     {
@@ -50,6 +52,18 @@ const fakeData = [
 
 
 function Home()  {
+    const { isAuthenticated } = useAuth0();
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if(isAuthenticated){
+            console.log('YOOOO')
+            // <Navigate to="/spotting" />;
+            navigate('/spotting')
+        }
+        
+    },[isAuthenticated]);
+    
 
     return (
         <>
