@@ -1,7 +1,7 @@
 import React, { useState, useCallback, memo } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';  
 
-const apiKey = process.env.REACT_APP_API_KEY;
+const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
 function Map({width='100%', height='100%', mLat, mLng }) {
     
