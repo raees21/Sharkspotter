@@ -24,17 +24,18 @@ namespace Sharkspotter_Backend.Controller
         /// </summary>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Spotting>), 200)]
-        public async Task<ActionResult<IEnumerable<Spotting>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<Spotting>>> GetSpottings()
         {
-            IEnumerable<Spotting> products = spottingService.getAllSpottings();
+            IEnumerable<Spotting> spottings = spottingService.getAllSpottings();
 
-            return StatusCode(200, products);
+            return StatusCode(200, spottings);
         }
 
         /// <summary>
         /// Get a single product
         /// </summary>
         [HttpGet("{spottingId}")]
+        [Authorize("read:spotting")]
         [ProducesResponseType(typeof(Spotting), 200)]
 
         public async Task<ActionResult<Spotting>> GetSpotting(int spottingId)
@@ -52,6 +53,7 @@ namespace Sharkspotter_Backend.Controller
         /// Create a new spotting
         /// </summary>
         [HttpPost]
+        //[Authorize("update:spottings")]
         [ProducesResponseType(typeof(Spotting), 201)]
         public async Task<ActionResult<Spotting>> CreateSpotting(Spotting spotting)
         {
@@ -61,17 +63,10 @@ namespace Sharkspotter_Backend.Controller
             return StatusCode(201, spotting);
         }
 
-        /// <summary>
-        /// Remove a spotting
-        /// </summary>
-        [HttpDelete("{productId}")]
-        public async Task<ActionResult> DeleteSpotting(int spottingId)
+        [HttpGet("spottingsByBeach{beachId}")]
+        public List<Spotting> getSpottingsByBeachId(int beachId)
         {
-            int code = await spottingService.DeleteSpotting(spottingId);
-
-            return StatusCode(code);
+            return spottingService.getSpottingsByBeachId(beachId);
         }
-
-
     }
 }
