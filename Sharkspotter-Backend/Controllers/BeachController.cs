@@ -23,10 +23,9 @@ namespace Sharkspotter_Backend.Data
         /// </summary>
         [HttpGet]
         [Authorize("read:beaches")]
-        [ProducesResponseType(typeof(IEnumerable<Beach>), 200)]
-        public async Task<ActionResult<IEnumerable<Beach>>> GetBeaches()
+        public async Task<ActionResult<List<Dictionary<string,string>>>> GetBeaches()
         {
-            IEnumerable<Beach> beaches =  beachService.getAllBeaches();
+            List<Dictionary<string,string>> beaches =  beachService.getAllBeaches();
             
             return StatusCode(200, beaches);
         }

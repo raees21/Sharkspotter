@@ -35,7 +35,7 @@ namespace Sharkspotter_Backend.Controller
         /// Get a single product
         /// </summary>
         [HttpGet("{spottingId}")]
-        [Authorize("read:spotting")]
+        
         [ProducesResponseType(typeof(Spotting), 200)]
 
         public async Task<ActionResult<Spotting>> GetSpotting(int spottingId)
@@ -64,6 +64,7 @@ namespace Sharkspotter_Backend.Controller
         }
 
         [HttpGet("spottingsByBeach{beachId}")]
+        [Authorize("read:spottings_by_beach_id")]
         public List<Spotting> getSpottingsByBeachId(int beachId)
         {
             return spottingService.getSpottingsByBeachId(beachId);
