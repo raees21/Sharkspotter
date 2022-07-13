@@ -41,7 +41,7 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
 builder.Services.AddDbContext<DataContext>(
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("SharkspotterDB")));
+    options => options.UseSqlServer(GetSecretsClass.GetSecret()));
 
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<BeachService>();

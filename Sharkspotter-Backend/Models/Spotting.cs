@@ -6,8 +6,8 @@
         public int userid { get; set; }
         public int beachid { get; set; }
         public DateTime spottingAt { get; set; }
-        public string comment {get;set;}
-        public string sharktype{get;set;}
+        public string comment { get; set; } = "";
+        public string sharktype { get; set; } = "";
 
         public Spotting() { }
         public Spotting(int spottingid, int userid, int beachid, DateTime spottingAt,string comment,string sharktype)
