@@ -5,7 +5,7 @@ import Map from '../map/map';
 import Button from '../button/button';
 
 function ImageCard(props)  {
-    const {title,text,date,position="right", coordinates: {lat, lng}} = props;
+    const {id,title,text,date,position="right", coordinates: {lat, lng}} = props;
 
     return (
        <article className={`image-card ${position=="right" ? "image-right" : "image-left"}`}>
@@ -13,7 +13,7 @@ function ImageCard(props)  {
                 <h4 className="image-card-title">{title}</h4>
                 <p className="image-card-text">{text}</p>
                 <p className="image-card-date">Date: {date}</p>
-                <Button link_to="/sighting" type="secondary" text="View More" />
+                <Button link_to={`/sighting/${id}`} type="secondary" text="View More" />
             </section>
             <section className="image-card-image">
                 <Map mLat={lat} mLng={lng} />

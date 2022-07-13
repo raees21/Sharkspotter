@@ -44,7 +44,8 @@ function Spotting()  {
             comment: Yup.string().max(250, "Must be 250 characters or less")
         }),
         onSubmit:(values) =>{
-            console.log("values")
+            // SEND values
+            
         }
     })
     return (

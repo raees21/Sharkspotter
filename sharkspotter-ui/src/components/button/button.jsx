@@ -6,12 +6,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function Button(props) {
   const { type, text, link_to, auth } = props;
-  const { isAuthenticated } = useAuth0();
-  const { loginWithRedirect } = useAuth0();
-  const { logout } = useAuth0();
+  const { isAuthenticated, loginWithPopup, logout } = useAuth0();
 
   if (auth) {
-    console.log(isAuthenticated);
+    
     return isAuthenticated ? (
       <Link
         to={`${link_to}`}
@@ -23,7 +21,7 @@ function Button(props) {
     ) : (
       <Link
         to={`${link_to}`}
-        onClick={() => loginWithRedirect()}
+        onClick={() => loginWithPopup()}
         className={`generic-button ${type}`}
       >
         Log in

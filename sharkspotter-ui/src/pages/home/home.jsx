@@ -57,7 +57,7 @@ function Home()  {
             <p className='sub-title'>These are the beaches with the most recent shark sightings</p>
             {
                 fakeData.map(({id, title, description, date, position, coordinates}) =>(
-                    <ImageCard key={id} title={title} text={description} date={date} position={position} coordinates={coordinates} />
+                    <ImageCard key={id} id={id} title={title} text={description} date={date} position={position} coordinates={coordinates} />
                 ))
             }
         </>

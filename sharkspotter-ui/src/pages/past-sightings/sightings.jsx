@@ -2,6 +2,7 @@ import React from 'react';
 import './sightings.css';
 import image from '../../images/image.svg';
 import Map from '../../components/map/map';
+import { useParams } from 'react-router-dom';
 
 const mockBeachInfo = {
     beachName: 'Muizenberg Beach',
@@ -10,13 +11,14 @@ const mockBeachInfo = {
         { date: '9 July 2022', comment: 'A great white was spotted swimming along the coast, occasionally approaching the beach' },
         {date: '7 July 2022', comment: 'A great white was spotted swimming along the coast'},
         {date: '1 July 2022', comment: 'A great white was spotted swimming along the coast'},
-        
     ]
 }
 
-function Sightings(props) {
+function Sightings() {
     const { beachName, coordinates, spottings } = mockBeachInfo;
     const { lat, lng } = coordinates;
+    const {id} = useParams();
+    console.log(id);
 
     return (
         <>
@@ -25,7 +27,6 @@ function Sightings(props) {
             <section className='map-card'>
                 <Map mLat={lat} mLng={lng} />
             </section>
-            
             {
             spottings.map(({ date, comment }, index) => (
                 <section className='spottings-listing' key={index}>
