@@ -34,8 +34,14 @@ namespace Sharkspotter_Backend.Controller
         /// <summary>
         /// Get a single product
         /// </summary>
+<<<<<<< Updated upstream
         [HttpGet("{spottingId}")]
         [Authorize("read:spotting")]
+=======
+        [Authorize]
+        [HttpGet("{spottingId}")]
+        
+>>>>>>> Stashed changes
         [ProducesResponseType(typeof(Spotting), 200)]
 
         public async Task<ActionResult<Spotting>> GetSpotting(int spottingId)
@@ -52,6 +58,10 @@ namespace Sharkspotter_Backend.Controller
         /// <summary>
         /// Create a new spotting
         /// </summary>
+<<<<<<< Updated upstream
+=======
+        [Authorize]
+>>>>>>> Stashed changes
         [HttpPost]
         //[Authorize("update:spottings")]
         [ProducesResponseType(typeof(Spotting), 201)]
@@ -63,7 +73,13 @@ namespace Sharkspotter_Backend.Controller
             return StatusCode(201, spotting);
         }
 
+<<<<<<< Updated upstream
         [HttpGet("spottingsByBeach{beachId}")]
+=======
+        [Authorize]
+        [HttpGet("spottingsByBeach{beachId}")]
+        //[Authorize("read:spottings_by_beach_id")]
+>>>>>>> Stashed changes
         public List<Spotting> getSpottingsByBeachId(int beachId)
         {
             return spottingService.getSpottingsByBeachId(beachId);
