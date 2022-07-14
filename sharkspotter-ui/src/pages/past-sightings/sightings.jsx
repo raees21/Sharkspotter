@@ -4,6 +4,8 @@ import image from '../../images/image.svg';
 import Map from '../../components/map/map';
 import { useParams } from 'react-router-dom';
 import { DateTime } from 'luxon';
+import { useAuth } from '../../services';
+
 
 const baseUrl = 'https://localhost:7213';
 
@@ -12,15 +14,16 @@ function Sightings() {
     const [beachData, setBeachData] = useState([]);
     const [beachName, setBeachName] = useState();
     const [coordinates, setBeachCoordinates] = useState({ lat: 0, lng: 0 });
+    const { getAccessToken } = useAuth();
 
     useEffect(() => {
         const fetchData = async () => {
-            const token = '';
+            const token = await getAccessToken();
             const spottingUrl = `${baseUrl}/api/v1/spottings/spottingsByBeach${beachId}`; //TODO to be changed to production url
             const beachUrl = `${baseUrl}/api/v1/beaches/${beachId}`;
             const method = 'GET';
             const headers = {
-                "authorization": `Bearer ${token}`,
+                authorization: `Bearer ${token}`,
                 Accept: 'application/json',
                 'Content-Type': 'application/json;charset=UTF-8',
                 'request-time': DateTime.now().toISO({ includeOffset: true })

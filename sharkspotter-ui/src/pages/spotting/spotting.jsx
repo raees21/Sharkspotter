@@ -5,14 +5,27 @@ import * as Yup from 'yup'
 import Select from 'react-select';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../services';
+import { DateTime } from 'luxon';
+
 
 function Spotting()  {
-
+    const { getAccessToken } = useAuth();
     const [beachNames, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const Navigate = useNavigate();
+
+    const postSpotting = async (values) => {
+        const token = await getAccessToken();
+        const config = {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        }
+        const resp = axios.post('https://localhost:7213/api/v1/spottings', values, config);
+    }
 
     useEffect(() =>{
         setLoading(true);
@@ -71,16 +84,10 @@ function Spotting()  {
             spottingAt: Yup.string().required("Required"),
             comment: Yup.string().max(250, "Must be 250 characters or less")
         }),
-        onSubmit:(values) =>{
-            values.spottingAt = values.spottingAt + "T16:33:58.52";
-            values.userid = 13;
-            values.beachid = parseInt(values.beachid)
-            try{
-                const resp = axios.post('https://localhost:7213/api/v1/spottings', values);
-            }catch(error){
-                console.log(error)
-            }
-            Navigate('/')
+        onSubmit: async (values) =>{
+            values.beachid = parseInt(values.beachid);
+            await postSpotting(values);
+            Navigate('/');
         }
     })
     return (

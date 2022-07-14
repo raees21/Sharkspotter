@@ -10,11 +10,11 @@ function Home() {
     const { getAccessToken } = useAuth();
     useEffect(() => {
         const fetchData = async () => {
-            const token = '';
+            const token = await getAccessToken();
             const baseUrl = 'https://localhost:7213/api/v1/beaches' //TODO to be changed to production url
             const method = 'GET';
             const headers = {
-                "authorization": `Bearer ${token}`,
+                authorization: `Bearer ${token}`,
                 Accept: 'application/json',
                 'Content-Type': 'application/json;charset=UTF-8',
                 'request-time': DateTime.now().toISO({ includeOffset: true })
