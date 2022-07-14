@@ -10,18 +10,12 @@ namespace Sharkspotter_Backend.Data
     public class UserController : ControllerBase
     {
         private readonly UserService uService;
-<<<<<<< Updated upstream
-        public UserController(UserService service){
-            this.uService = service;
-        }
-=======
         private readonly AdminService aService;
         public UserController(UserService service, AdminService service2){
             this.uService = service;
             this.aService = service2;
         }
         [Authorize]
->>>>>>> Stashed changes
         [HttpPost("create")]
         public IActionResult createUser(User user)
         {
@@ -30,12 +24,8 @@ namespace Sharkspotter_Backend.Data
         }
 
         [HttpGet("getAll")]
-<<<<<<< Updated upstream
-        [Authorize("read:users")]
-=======
         //[Authorize("read:users")]
         [Authorize]
->>>>>>> Stashed changes
         public List<User> getAllUsers()
         {
             return uService.getAllUsers();

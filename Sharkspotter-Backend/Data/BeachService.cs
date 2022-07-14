@@ -17,13 +17,24 @@ namespace Sharkspotter_Backend.Data
             context.SaveChanges();
             return 1;
         }
-        public IEnumerable<Beach> getAllBeaches()
-        {
-            var beaches = context.Beaches.ToList();
-            var beaches_list = new List<Beach>();
-            beaches.ForEach(u => beaches_list.Add(u));
-            return beaches_list;
+
+    public List<BeachB> getAllBeaches(){
+        var beaches = context.Beaches.ToList();
+        var beaches_list = new List<Beach>();
+        var final_list = new List<BeachB>();
+        beaches.ForEach(u => beaches_list.Add(u));
+        foreach(Beach beach in beaches){
+            var spotting = context.Spottings.Where(s=>s.beachid == beach.beachid).ToList();
+            DateTime date =new DateTime();
+            if(spotting.Count()>0){
+                date = spotting[spotting.Count()-1].spottingAt;
+            }
+            BeachB beachb = new BeachB(beach.beachid, beach.latitude, beach.longitude, beach.beach_name, beach.description, date);
+            final_list.Add(beachb);
         }
+        return final_list;
+        }
+
 
         public async Task<Beach> getBeach(int id)
         {
@@ -37,7 +48,7 @@ namespace Sharkspotter_Backend.Data
             context.Beaches.Add(beach);
             await context.SaveChangesAsync();
           
-        }
+        }   
 
     }
 }

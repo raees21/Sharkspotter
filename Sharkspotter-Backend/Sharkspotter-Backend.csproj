@@ -17,12 +17,9 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-<<<<<<< Updated upstream
-=======
     <PackageReference Include="RestClient" Version="3.860.28084" />
     <PackageReference Include="RestRequest" Version="1.2.0" />
     <PackageReference Include="RestSharp.RequestBuilder" Version="1.0.2" />
->>>>>>> Stashed changes
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 

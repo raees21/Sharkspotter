@@ -18,17 +18,6 @@ namespace Sharkspotter_Backend.Data
             this.beachService = service;
         }
 
-<<<<<<< Updated upstream
-        /// <summary>
-        /// Get all beaches
-        /// </summary>
-        [HttpGet]
-        [Authorize("read:beaches")]
-        [ProducesResponseType(typeof(IEnumerable<Beach>), 200)]
-        public async Task<ActionResult<IEnumerable<Beach>>> GetBeaches()
-        {
-            IEnumerable<Beach> beaches =  beachService.getAllBeaches();
-=======
     /// <summary>
     /// Get all beaches
     /// </summary>
@@ -38,7 +27,6 @@ namespace Sharkspotter_Backend.Data
         public async Task<ActionResult<List<BeachB>>> GetBeaches()
         {
             List<BeachB> beaches =  beachService.getAllBeaches();
->>>>>>> Stashed changes
             
             return StatusCode(200, beaches);
         }
@@ -46,10 +34,7 @@ namespace Sharkspotter_Backend.Data
         /// <summary>
         /// Get a single beach
         /// </summary>
-<<<<<<< Updated upstream
-=======
         [Authorize]
->>>>>>> Stashed changes
         [HttpGet("{beachId}")]
         [ProducesResponseType(typeof(Beach), 200)]
 
@@ -67,10 +52,7 @@ namespace Sharkspotter_Backend.Data
         /// <summary>
         /// Create a new beach
         /// </summary>
-<<<<<<< Updated upstream
-=======
         [Authorize]
->>>>>>> Stashed changes
         [HttpPost]
         [ProducesResponseType(typeof(Beach), 201)]
         public async Task<ActionResult<Beach>> CreateBeach(Beach beach)
