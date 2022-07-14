@@ -92,7 +92,6 @@ function Spotting()  {
             comment: Yup.string().max(250, "Must be 250 characters or less")
         }),
         onSubmit: async (values) => {
-            console.log(values);
             values.beachid = parseInt(values.beachid);
             await postSpotting(values);
             Navigate('/');
