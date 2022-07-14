@@ -18,16 +18,13 @@ namespace Sharkspotter_Backend.Controllers
         [AllowAnonymous]
         [HttpGet]
         [Route("Token/{key}")]
-        public ActionResult<String> AuthUser(String key)
+        public Dictionary<string, int> AuthUser(String key)
         {
+            var map = new Dictionary<string, int>(); 
             List<Admin> admins = adminService.getAdmin();
             var token = jwtAuthenticationManager.Authenticate(key,admins);
-
-            if (token == null)
-            {
-                return Unauthorized();
-            }
-            return StatusCode(200, token);
+            map.Add(token,3600000);
+            return map;
         }
     }
 }
