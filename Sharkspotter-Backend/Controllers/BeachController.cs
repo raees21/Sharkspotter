@@ -18,12 +18,13 @@ namespace Sharkspotter_Backend.Data
             this.beachService = service;
         }
 
-        /// <summary>
-        /// Get all beaches
-        /// </summary>
+    /// <summary>
+    /// Get all beaches
+    /// </summary>
+        [Authorize]
         [HttpGet]
         //[Authorize("read:beaches")]
-        public async Task<ActionResult<List<Dictionary<string,string>>>> GetBeaches()
+        public async Task<ActionResult<List<BeachB>>> GetBeaches()
         {
             List<BeachB> beaches =  beachService.getAllBeaches();
             
@@ -33,6 +34,7 @@ namespace Sharkspotter_Backend.Data
         /// <summary>
         /// Get a single beach
         /// </summary>
+        [Authorize]
         [HttpGet("{beachId}")]
         [ProducesResponseType(typeof(Beach), 200)]
 
@@ -50,6 +52,7 @@ namespace Sharkspotter_Backend.Data
         /// <summary>
         /// Create a new beach
         /// </summary>
+        [Authorize]
         [HttpPost]
         [ProducesResponseType(typeof(Beach), 201)]
         public async Task<ActionResult<Beach>> CreateBeach(Beach beach)

@@ -2,6 +2,7 @@ import React from 'react';
 import './header.css';
 import Button from '../button/button';
 
+
 import "./header.css";
 
 import { Link } from 'react-router-dom';
@@ -13,7 +14,7 @@ function Header() {
                 <Link to="/" className="logo-link">Sharkspotter</Link>
             </h1>
             <section className="button-group">
-                <Button auth={true} link_to="/testing" type="primary" text="Report a Sighting" />
+                <Button link_to="/spotting" auth={true} type="primary" text="Report a Sighting" />
             </section>
         </header>
     );

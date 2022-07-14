@@ -7,6 +7,7 @@ import fetch from 'node-fetch';
 import { DateTime } from 'luxon';
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import Loading from '../../components/loading';
 
 function Home() {
     const [beachData, setBeachData] = useState([{coordinates: { lat: 0, lng: 0 },}]);
@@ -23,11 +24,11 @@ function Home() {
     
     useEffect(() => {
         const fetchData = async () => {
-            const token = '';
+            const token = await getAccessToken();
             const baseUrl = 'https://localhost:7213/api/v1/beaches' //TODO to be changed to production url
             const method = 'GET';
             const headers = {
-                "authorization": `Bearer ${token}`,
+                authorization: `Bearer ${token}`,
                 Accept: 'application/json',
                 'Content-Type': 'application/json;charset=UTF-8',
                 'request-time': DateTime.now().toISO({ includeOffset: true })
@@ -39,7 +40,7 @@ function Home() {
                     id: beachid,
                     title: beach_name,
                     coordinates: { lat: latitude, lng: longitude },
-                    position: index % 2 == 0 ? "left" : "right",
+                    position: index % 2 == 0 ? "right" : "left",
                     date: new Date().toString().split('GMT')[0],
                     description
                 }
