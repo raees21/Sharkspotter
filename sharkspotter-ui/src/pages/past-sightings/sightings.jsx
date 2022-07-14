@@ -54,7 +54,6 @@ function Sightings() {
             <section className='map-card'>
                 <Map mLat={coordinates.lat} mLng={coordinates.lng} />
             </section>
-            
             {
             beachData.map(({ date, comment }, index) => (
                 <section className='spottings-listing' key={index}>

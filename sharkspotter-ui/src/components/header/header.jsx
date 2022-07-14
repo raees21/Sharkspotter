@@ -14,7 +14,7 @@ function Header() {
                 <Link to="/" className="logo-link">Sharkspotter</Link>
             </h1>
             <section className="button-group">
-                <Button link_to="/spotting" type="primary" text="Report a Sighting" />
+                <Button link_to="/spotting" auth={true} type="primary" text="Report a Sighting" />
             </section>
         </header>
     );
