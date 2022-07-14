@@ -6,8 +6,6 @@ import Select from 'react-select';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../services';
-import { DateTime } from 'luxon';
-
 
 function Spotting()  {
     const { getAccessToken } = useAuth();
@@ -27,20 +25,29 @@ function Spotting()  {
         const resp = axios.post('https://localhost:7213/api/v1/spottings', values, config);
     }
 
-    useEffect(() =>{
-        setLoading(true);
-        axios.get('https://localhost:7213/api/v1/beaches').then((response) =>{
-            setData(response.data);
-        }).catch((err) =>{
-            setError(err);
-        }).finally(()=>{
-            setLoading(false);
-        });
+    useEffect(() => {
+        const getPost = async () => {
+            setLoading(true);
+            const token = await getAccessToken();
+            const config = {
+                headers: {
+                    authorization: `Bearer ${token}`
+                }
+            }
+            axios.get('https://localhost:7213/api/v1/beaches', config).then((response) => {
+                setData(response.data);
+            }).catch((err) => {
+                setError(err);
+            }).finally(() => {
+                setLoading(false);
+            });
+        }
+        getPost();
     }, ['https://localhost:7213/api/v1/beaches']);
 
-    const arr = beachNames.map((beachNames, index) =>{
+    const arr = beachNames.map((beachNames, index) => {
         return (
-            { value: beachNames.beach_name, label: beachNames.beach_name , bID: beachNames.beachId}
+            { value: beachNames.beach_name, label: beachNames.beach_name , bID: beachNames.beachid }
         )
     })
 
@@ -72,8 +79,8 @@ function Spotting()  {
     }
 
     const formik = useFormik({
-        initialValues:{
-            userid: null,
+        initialValues: {
+            userid: 13,
             beachid: null,
             sharkType: "",
             spottingAt: "",
@@ -84,7 +91,8 @@ function Spotting()  {
             spottingAt: Yup.string().required("Required"),
             comment: Yup.string().max(250, "Must be 250 characters or less")
         }),
-        onSubmit: async (values) =>{
+        onSubmit: async (values) => {
+            console.log(values);
             values.beachid = parseInt(values.beachid);
             await postSpotting(values);
             Navigate('/');

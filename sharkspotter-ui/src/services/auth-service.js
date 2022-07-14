@@ -25,7 +25,6 @@ export function useAuth() {
       accessToken = Object.keys(authCode)[0];
       const expires_in = Object.values(authCode)[0];
       expiresIn = Date.now() + expires_in; 
-      console.log(accessToken, expires_in);
       return accessToken;
     }
     return accessToken;
