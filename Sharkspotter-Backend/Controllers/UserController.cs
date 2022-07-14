@@ -10,9 +10,12 @@ namespace Sharkspotter_Backend.Data
     public class UserController : ControllerBase
     {
         private readonly UserService uService;
-        public UserController(UserService service){
+        private readonly AdminService aService;
+        public UserController(UserService service, AdminService service2){
             this.uService = service;
+            this.aService = service2;
         }
+        [Authorize]
         [HttpPost("create")]
         public IActionResult createUser(User user)
         {
@@ -21,7 +24,8 @@ namespace Sharkspotter_Backend.Data
         }
 
         [HttpGet("getAll")]
-        [Authorize("read:users")]
+        //[Authorize("read:users")]
+        [Authorize]
         public List<User> getAllUsers()
         {
             return uService.getAllUsers();

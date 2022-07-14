@@ -34,6 +34,7 @@ namespace Sharkspotter_Backend.Controller
         /// <summary>
         /// Get a single product
         /// </summary>
+        [Authorize]
         [HttpGet("{spottingId}")]
         
         [ProducesResponseType(typeof(Spotting), 200)]
@@ -52,6 +53,7 @@ namespace Sharkspotter_Backend.Controller
         /// <summary>
         /// Create a new spotting
         /// </summary>
+        [Authorize]
         [HttpPost]
         //[Authorize("update:spottings")]
         [ProducesResponseType(typeof(Spotting), 201)]
@@ -63,8 +65,9 @@ namespace Sharkspotter_Backend.Controller
             return StatusCode(201, spotting);
         }
 
+        [Authorize]
         [HttpGet("spottingsByBeach{beachId}")]
-        [Authorize("read:spottings_by_beach_id")]
+        //[Authorize("read:spottings_by_beach_id")]
         public List<Spotting> getSpottingsByBeachId(int beachId)
         {
             return spottingService.getSpottingsByBeachId(beachId);
